@@ -1,4 +1,3 @@
-import { ComponentClass } from 'react';
 import Taro, { Component } from '@tarojs/taro';
 import { View, Text, Picker } from '@tarojs/components';
 
@@ -18,7 +17,7 @@ enum Week {
   Saturday,
 }
 
-class Calendar extends Component {
+export default class Calendar extends Component {
   constructor() {
     super();
     const today: Date = new Date();
@@ -113,13 +112,13 @@ class Calendar extends Component {
         </View>
         <View>
           {
-            this.state.currentMonth.map((current, i) => {
+            currentMonth.map(current => {
               return (
                 <View style={{ color: current.isCurrentMonth ? current.isToday ? "red" : "black" : "gray", display: "inline-block", width: "13vw" }} key={current.date.getTime()}>
                   <Text>{current.date.getDate()}</Text>
                 </View>
               );
-            }
+            })
           }
         </View>
       </View>
